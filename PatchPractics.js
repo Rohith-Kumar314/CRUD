@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import morgan, { format } from "morgan";
 import { hash } from "bcrypt";
 import { config } from "dotenv";
+import { booksRouter } from "./level2.js";
 
 config();
 
@@ -38,6 +39,8 @@ const UserModel = mongoose.model("UserModel", userSchema);
 function asyncWrapper(fn) {
   return (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);
 }
+
+app.use("/books",booksRouter);
 
 app.get("/", (req, res) => {
   res.status(200).json({ success: true, message: "Server is up", data: [] });
