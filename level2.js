@@ -20,10 +20,12 @@ export const booksRouter = Router();
 
 // GET allbooks
 booksRouter.get("/", async (req, res) => {
-  const books = await BooksModel.find({ genre: "scifi" })
-    .select("title price")
-    .sort("-price")
-    .limit(5);
+  const filters = {};
+  const {genre} = req.query;
+  if(genre){
+    filters.genre = genre;
+  }
+  const books = await BooksModel.find(filters);
   res
     .status(200)
     .json({ success: true, message: "Data fetched successfully", data: books });
