@@ -1,6 +1,6 @@
 import express from "express";
 import { User } from "./schemas.js";
-import { hash } from "bcrypt";
+import { hash } from "bcryptjs";
 import mongoose from "mongoose";
 
 const app = express();
