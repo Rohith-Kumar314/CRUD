@@ -1,0 +1,13 @@
+GET http://localhost:8080/users
+
+###
+
+PATCH http://localhost:8080/users/6ae335c1e6083e43f2dbb274
+Content-Type: application/json
+
+{
+    "name":"Rohith"
+}
+
+###
+GET http://localhost:8080/users/6ae335c1e6083e43f2dbb274
